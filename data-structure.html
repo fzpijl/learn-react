@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Structure</title>
+</head>
+<body>
+    <!-- linkedList -->
+    <script>
+        function LinkedListNode(data) {
+            this.data = data
+            this.next = null;
+        }
+        function LinkedList(){
+            this.head = null
+        }
+        LinkedList.prototype = {
+            constructor: LinkedList,
+            add(data) {
+                let newNode = new LinkedListNode(data)
+
+                if(this.head == null) {
+                    this.head = newNode
+                    return
+                }
+
+                let cur = this.head
+                while(cur.next){
+                    cur = cur.next
+                }
+                cur.next = newNode
+            },
+            insert(pos, data){
+                if(pos < 0 || pos >= this.size){
+                    return
+                }
+                let newNode = new LinkedListNode(data);
+                if(pos === 0) {
+                    newNode.next = this.head;
+                    this.head = newNode
+                    return
+                }
+                let pre = null, cur = this.head, next = null, index = 0;
+                while(index < pos){
+                    next = cur.next;
+                    pre = cur;
+                    cur = next;
+                    index++;
+                }
+                newNode.next = cur;
+                pre.next = newNode;
+            },
+            remove(data){
+                if(this.head === null) {
+                    return
+                }
+                if(this.head.data === data) {
+                    this.head = this.head.next ? this.head.next : null
+                    return
+                }
+
+                let pre = null;
+                let cur = this.head;
+                let next = null;
+                while(cur){
+                    if(cur.data === data) {
+                        pre.next = cur.next
+                        break
+                    };
+                    next = cur.next
+                    pre = cur
+                    cur = next
+                }
+               
+            },
+            removeAt(pos){
+                if(pos < 0 || pos >= this.size){
+                    return
+                }
+                if(pos === 0) {
+                    this.head = this.head.next
+                    return 
+                }
+                let pre = null, cur = this.head, next = null, i = 0
+                while(i < pos){
+                    next = cur.next;
+                    pre = cur;
+                    cur = next;
+                    i++
+                }
+                pre.next = cur.next
+
+            },
+            indexOf(data){
+                let cur = this.head, i = 0;
+                while(cur){
+                    if(cur.data === data) {
+                        return i
+                    }
+                    i++
+                    cur = cur.next
+                }
+                return -1
+            },
+            get size(){
+                let index = 0;
+                let cur = this.head;
+                while(cur){
+                    index++
+                    cur = cur.next
+                }
+                return index
+            },
+            get(index){
+                if(index < 0 || index >= this.size){
+                    return undefined
+                }
+                let i = 0;
+                let cur = this.head
+                while(i < index){
+                    cur = cur.next
+                    i++
+                }
+                return cur.data
+            },
+            print(){
+                printLinkedList(this.head)
+            },
+        }
+        let list = new LinkedList()
+        list.add(1)
+        list.add(2)
+        list.add(3)
+        list.add(4)
+        list.print()
+        function printLinkedList(node){
+            let cur = node, res = []
+            while(cur){
+                res.push(cur.data)
+                cur = cur.next
+            }
+            let str = res.join('->')
+            console.log(str)
+        }
+    </script>
+</body>
+</html>
