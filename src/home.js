@@ -1,1 +1,1 @@
-console.log('changed to test a commit')
+console.log('changed to test a')
