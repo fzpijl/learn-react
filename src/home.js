@@ -1,3 +1,1 @@
-console.log('homeß')
-console.log('modify')
-console.log('skip add')
+console.log('changed to test a commit')
