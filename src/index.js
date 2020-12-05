@@ -2,6 +2,8 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 import Child from './app/app.js'
 
+//aa
+
 class App extends React.Component {
     constructor(props) {
         super(props)
