@@ -1,5 +1,5 @@
 # Logs
-# dev
+# dev local change
 logs
 *.log
 npm-debug.log*
