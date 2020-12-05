@@ -2,7 +2,7 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 import Child from './app/app.js'
 
-//aa
+//remote index.js
 
 class App extends React.Component {
     constructor(props) {
